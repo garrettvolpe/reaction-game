@@ -36,3 +36,45 @@ print("2...")
 time.sleep(1)
 print("1...\n\n\n\n\n\n")
 time.sleep(1)
+
+total_times_want_to_play = 10
+list_of_scores = []
+x=0
+
+def game (num):
+    keyboard.is_pressed("n")
+    print(num)
+    start = time.time()
+    while (True):
+        try:
+            if keyboard.is_pressed(str(num)):
+                end = time.time()
+                return end-start
+                break
+        except:
+            pass
+
+while x < total_times_want_to_play:
+    random_digit = random.randrange(1, 10)
+    score = round(game(random_digit),4)
+    print("\n\n\n\n\n\n\n\n\n")
+    list_of_scores.append(float(str(score)))
+    time.sleep(random.randrange(1,3))
+    x += 1
+
+
+
+average = sum(list_of_scores) / len(list_of_scores)
+# print(list_of_scores)
+# print(average)
+print("""
+Results:
+
+Average score is .965 seconds
+
+Your average score was """ + str(average))
+
+if average < .965:
+    print("\nCongrats! You are faster than average")
+else:
+    print("\nYou are too slow......Step your game up!")
